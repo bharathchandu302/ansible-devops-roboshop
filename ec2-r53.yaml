@@ -18,7 +18,7 @@
       image_id: "{{ ami_id }}"
       tags:
         Name: "{{ item }}"
-    loop: "{{ item }}"
+    loop: "{{ instances }}"
     register: ec2_output
   - name: print the ec2_output
     ansible.builtin.debug:
