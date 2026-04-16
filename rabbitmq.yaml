@@ -24,7 +24,7 @@
       password: roboshop123
       permissions:
         - vhost: /
-          configure_priv: .*
-          read_ priv: .*
-          write_priv: .*
+          configure_priv: ".*"
+          read_priv: ".*"
+          write_priv: ".*"
       state: present
