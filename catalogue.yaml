@@ -47,7 +47,7 @@
         dest: /etc/systemd/system/catalogue.service
 
     - name: copy mongo repo
-      ansible.builtin.repo:
+      ansible.builtin.copy:
         src: mongo.repo
         dest: /etc/yum.repos.d/mongo.repo
 
@@ -65,5 +65,4 @@
         name: catalogue
         enabled: yes
         state: started
-
     
