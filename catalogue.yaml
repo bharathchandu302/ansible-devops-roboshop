@@ -21,10 +21,20 @@
         shell: /sbin/nologin
         home: /app
 
+    - name: remove app directory
+      ansible.builtin.file:
+        path: /app
+        state: absent
+
     - name: create app directory
       ansible.builtin.file:
         state: directory
         path: /app
+
+    - name: delete the catalogue file
+      ansible.builtin.file:
+        path: /tmp/catalogue.zip
+        state: absent
 
     - name: download catalogue application
       ansible.builtin.get_url:
@@ -60,9 +70,9 @@
       ansible.builtin.command: mongosh.mongodb.daws89s.fun --quiet --eval "db.getMongo().getDBnames().indexOf('catalogue')"
       register: catalogue_output
 
-    - name: start and enable
-      ansible.builtin.service:
+    - name: daemon reload enable and start
+      ansible.builtin.systemd_service:
         name: catalogue
         enabled: yes
         state: started
-    
+        daemon_reload: true
