@@ -67,7 +67,7 @@
         state: present
 
     - name: connect to mongodb catalogue
-      ansible.builtin.command: mongosh mongodb.daws89s.fun --quiet --eval "db.getMongo().getDBnames().indexOf('catalogue')"
+      ansible.builtin.command: mongosh mongodb.daws89s.fun --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
       register: catalogue_output
 
     - name: daemon reload enable and start
