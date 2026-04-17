@@ -50,6 +50,11 @@
     community.general.npm:
       path: /app
 
+  - name: copy user service
+    ansible.builtin.copy:
+      src: user.service
+      dest: /etc/systemd/system/user.service
+      
   - name: deamon reload enable and start
     ansible.builtin.systemd_service:
       name: user
